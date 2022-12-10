@@ -1,0 +1,655 @@
+2022-12-04 14:41:12.768  INFO 8129 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 8129 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:41:12.770  INFO 8129 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:41:13.349  INFO 8129 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:41:13.434  INFO 8129 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:41:13.546  INFO 8129 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=93b7c92f-4db2-3c9a-a37c-f1a224732a3b
+2022-12-04 14:41:13.623  INFO 8129 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:41:13.624  INFO 8129 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:41:13.626  INFO 8129 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:41:14.140  WARN 8129 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-04 14:41:14.243  INFO 8129 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8085
+2022-12-04 14:41:14.251  INFO 8129 --- [main] com.ms_person.MsPersonApplication        : Started MsPersonApplication in 1.948 seconds (JVM running for 2.487)
+2022-12-04 14:42:46.796  INFO 8129 --- [reactor-http-epoll-3] c.m.service.impl.PersonServiceImpl       : Mostrando todas las personas
+2022-12-04 14:42:47.090 ERROR 8129 --- [reactor-tcp-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [448d7dc9-1]  500 Server Error for HTTP GET "/v2/person"
+
+org.springframework.dao.DataAccessResourceFailureException: Failed to obtain R2DBC Connection; nested exception is io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: [3D000] database "ms_person" does not exist
+	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.lambda$getConnection$0(ConnectionFactoryUtils.java:88) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ Handler com.ms_person.controller.PersonController#findAll() [DispatcherHandler]
+	*__checkpoint ⇢ HTTP GET "/v2/person" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+		at org.springframework.r2dbc.connection.ConnectionFactoryUtils.lambda$getConnection$0(ConnectionFactoryUtils.java:88) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+		at reactor.core.publisher.Mono.lambda$onErrorMap$31(Mono.java:3730) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:94) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxRetry$RetrySubscriber.onError(FluxRetry.java:95) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onError(MonoFlatMap.java:172) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.pool.AbstractPool$Borrower.fail(AbstractPool.java:475) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.pool.SimpleDequePool.lambda$drainLoop$9(SimpleDequePool.java:431) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.core.publisher.FluxDoOnEach$DoOnEachSubscriber.onError(FluxDoOnEach.java:186) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onError(FluxMap.java:265) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onError(MonoFlatMap.java:172) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoDelayUntil$DelayUntilTrigger.onError(MonoDelayUntil.java:514) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandle$HandleSubscriber.onError(FluxHandle.java:210) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:132) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:340) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$BufferAsyncSink.drain(FluxCreate.java:814) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$BufferAsyncSink.next(FluxCreate.java:739) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$SerializedFluxSink.next(FluxCreate.java:161) ~[reactor-core-3.4.22.jar:3.4.22]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$Conversation.emit(ReactorNettyClient.java:635) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.emit(ReactorNettyClient.java:887) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:761) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:667) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:126) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeekFuseable$PeekConditionalSubscriber.onNext(FluxPeekFuseable.java:854) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:279) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:388) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:404) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:93) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:327) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:299) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:800) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:487) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:385) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: database "ms_person" does not exist
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:109) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.handleErrorResponse(ExceptionFactory.java:132) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:110) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:340) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.drain(FluxCreate.java:814) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.next(FluxCreate.java:739) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$SerializedFluxSink.next(FluxCreate.java:161) ~[reactor-core-3.4.22.jar:3.4.22]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$Conversation.emit(ReactorNettyClient.java:635) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.emit(ReactorNettyClient.java:887) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:761) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:667) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:126) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxPeekFuseable$PeekConditionalSubscriber.onNext(FluxPeekFuseable.java:854) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:279) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:388) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:404) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:93) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:327) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:299) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:800) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:487) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:385) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-12-04 14:43:58.059  INFO 8799 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 8799 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:43:58.060  INFO 8799 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:43:58.474  INFO 8799 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:43:58.578  INFO 8799 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:43:58.704  INFO 8799 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=93b7c92f-4db2-3c9a-a37c-f1a224732a3b
+2022-12-04 14:43:58.771  INFO 8799 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:43:58.772  INFO 8799 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:43:58.773  INFO 8799 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:43:58.945  WARN 8799 --- [main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personController': Unsatisfied dependency expressed through field 'personService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'personServiceImpl': Unsatisfied dependency expressed through field 'personRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'personRepository' defined in com.ms_person.repository.PersonRepository defined in @EnableR2dbcRepositories declared on R2dbcRepositoriesAutoConfigureRegistrar.EnableR2dbcRepositoriesConfiguration: Cannot resolve reference to bean 'r2dbcEntityTemplate' while setting bean property 'entityOperations'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.data.r2dbc.R2dbcDataAutoConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'r2dbcDatabaseClient' defined in class path resource [org/springframework/boot/autoconfigure/r2dbc/ConnectionFactoryDependentConfiguration.class]: Unsatisfied dependency expressed through method 'r2dbcDatabaseClient' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'connectionFactory' defined in class path resource [org/springframework/boot/autoconfigure/r2dbc/ConnectionFactoryConfigurations$PoolConfiguration$PooledConnectionFactoryConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [io.r2dbc.pool.ConnectionPool]: Factory method 'connectionFactory' threw exception; nested exception is java.lang.ExceptionInInitializerError
+2022-12-04 14:44:12.880  INFO 9318 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 9318 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:44:12.882  INFO 9318 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:44:13.177  INFO 9318 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:44:13.248  INFO 9318 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:44:13.355  INFO 9318 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=93b7c92f-4db2-3c9a-a37c-f1a224732a3b
+2022-12-04 14:44:13.418  INFO 9318 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:44:13.418  INFO 9318 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:44:13.420  INFO 9318 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:44:13.941  WARN 9318 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-04 14:44:14.055  INFO 9318 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8085
+2022-12-04 14:44:14.063  INFO 9318 --- [main] com.ms_person.MsPersonApplication        : Started MsPersonApplication in 1.434 seconds (JVM running for 1.75)
+2022-12-04 14:44:18.955  INFO 9318 --- [reactor-http-epoll-3] c.m.service.impl.PersonServiceImpl       : Mostrando todas las personas
+2022-12-04 14:44:19.226 ERROR 9318 --- [reactor-tcp-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [53204a12-1]  500 Server Error for HTTP GET "/v2/person"
+
+org.springframework.dao.DataAccessResourceFailureException: Failed to obtain R2DBC Connection; nested exception is io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: [3D000] database "ms_person" does not exist
+	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.lambda$getConnection$0(ConnectionFactoryUtils.java:88) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ Handler com.ms_person.controller.PersonController#findAll() [DispatcherHandler]
+	*__checkpoint ⇢ HTTP GET "/v2/person" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+		at org.springframework.r2dbc.connection.ConnectionFactoryUtils.lambda$getConnection$0(ConnectionFactoryUtils.java:88) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+		at reactor.core.publisher.Mono.lambda$onErrorMap$31(Mono.java:3730) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:94) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxRetry$RetrySubscriber.onError(FluxRetry.java:95) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onError(MonoFlatMap.java:172) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.pool.AbstractPool$Borrower.fail(AbstractPool.java:475) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.pool.SimpleDequePool.lambda$drainLoop$9(SimpleDequePool.java:431) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.core.publisher.FluxDoOnEach$DoOnEachSubscriber.onError(FluxDoOnEach.java:186) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onError(FluxMap.java:265) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoFlatMap$FlatMapMain.onError(MonoFlatMap.java:172) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoDelayUntil$DelayUntilTrigger.onError(MonoDelayUntil.java:514) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandle$HandleSubscriber.onError(FluxHandle.java:210) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:132) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:340) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$BufferAsyncSink.drain(FluxCreate.java:814) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$BufferAsyncSink.next(FluxCreate.java:739) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$SerializedFluxSink.next(FluxCreate.java:161) ~[reactor-core-3.4.22.jar:3.4.22]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$Conversation.emit(ReactorNettyClient.java:635) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.emit(ReactorNettyClient.java:887) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:761) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:667) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:126) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeekFuseable$PeekConditionalSubscriber.onNext(FluxPeekFuseable.java:854) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:279) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:388) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:404) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:93) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:327) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:299) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:800) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:487) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:385) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: database "ms_person" does not exist
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:109) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.handleErrorResponse(ExceptionFactory.java:132) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:110) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:340) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.drain(FluxCreate.java:814) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.next(FluxCreate.java:739) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$SerializedFluxSink.next(FluxCreate.java:161) ~[reactor-core-3.4.22.jar:3.4.22]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$Conversation.emit(ReactorNettyClient.java:635) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.emit(ReactorNettyClient.java:887) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:761) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:667) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:126) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxPeekFuseable$PeekConditionalSubscriber.onNext(FluxPeekFuseable.java:854) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:279) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:388) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:404) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:93) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:327) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:299) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:800) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:487) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:385) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-12-04 14:44:58.723  INFO 9518 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 9518 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:44:58.724  INFO 9518 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:44:59.105  INFO 9518 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:44:59.183  INFO 9518 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:44:59.309  INFO 9518 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=64bdfe1a-1b75-32e5-865e-452dc2a61987
+2022-12-04 14:44:59.380  INFO 9518 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:44:59.381  INFO 9518 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:44:59.383  INFO 9518 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:44:59.943  WARN 9518 --- [main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initializer' defined in com.ms_person.MsPersonApplication: Invocation of init method failed; nested exception is org.springframework.r2dbc.connection.init.UncategorizedScriptException: Failed to execute database script; nested exception is org.springframework.dao.DataAccessResourceFailureException: Failed to obtain R2DBC Connection; nested exception is io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: [3D000] database "ms_person" does not exist
+2022-12-04 14:44:59.953  INFO 9518 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-12-04 14:44:59.965 ERROR 9518 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initializer' defined in com.ms_person.MsPersonApplication: Invocation of init method failed; nested exception is org.springframework.r2dbc.connection.init.UncategorizedScriptException: Failed to execute database script; nested exception is org.springframework.dao.DataAccessResourceFailureException: Failed to obtain R2DBC Connection; nested exception is io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: [3D000] database "ms_person" does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.3.jar:2.7.3]
+	at com.ms_person.MsPersonApplication.main(MsPersonApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.r2dbc.connection.init.UncategorizedScriptException: Failed to execute database script; nested exception is org.springframework.dao.DataAccessResourceFailureException: Failed to obtain R2DBC Connection; nested exception is io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: [3D000] database "ms_person" does not exist
+	at org.springframework.r2dbc.connection.init.DatabasePopulator.lambda$populate$4(DatabasePopulator.java:65) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+	at reactor.core.publisher.Mono.lambda$onErrorMap$30(Mono.java:3716) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Mono.lambda$onErrorResume$32(Mono.java:3806) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:94) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoUsingWhen$ResourceSubscriber.onError(MonoUsingWhen.java:203) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxRetry$RetrySubscriber.onError(FluxRetry.java:95) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoFlatMap$FlatMapMain.onError(MonoFlatMap.java:172) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.pool.AbstractPool$Borrower.fail(AbstractPool.java:475) ~[reactor-pool-0.2.9.jar:0.2.9]
+	at reactor.pool.SimpleDequePool.lambda$drainLoop$9(SimpleDequePool.java:431) ~[reactor-pool-0.2.9.jar:0.2.9]
+	at reactor.core.publisher.FluxDoOnEach$DoOnEachSubscriber.onError(FluxDoOnEach.java:186) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onError(FluxMap.java:265) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoFlatMap$FlatMapMain.onError(MonoFlatMap.java:172) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:106) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.MonoDelayUntil$DelayUntilTrigger.onError(MonoDelayUntil.java:514) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onError(FluxHandle.java:210) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:132) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxHandle$HandleConditionalSubscriber.onNext(FluxHandle.java:340) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.drain(FluxCreate.java:814) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.next(FluxCreate.java:739) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$SerializedFluxSink.next(FluxCreate.java:161) ~[reactor-core-3.4.22.jar:3.4.22]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$Conversation.emit(ReactorNettyClient.java:635) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.emit(ReactorNettyClient.java:887) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:761) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:667) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:126) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxPeekFuseable$PeekConditionalSubscriber.onNext(FluxPeekFuseable.java:854) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:279) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:388) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:404) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:93) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:327) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:299) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:800) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:487) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:385) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.block(Mono.java:1707) ~[reactor-core-3.4.22.jar:3.4.22]
+		at org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer.execute(ConnectionFactoryInitializer.java:112) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+		at org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer.afterPropertiesSet(ConnectionFactoryInitializer.java:97) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.22.jar:5.3.22]
+		at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.22.jar:5.3.22]
+		at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.22.jar:5.3.22]
+		at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.3.jar:2.7.3]
+		at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-2.7.3.jar:2.7.3]
+		at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.3.jar:2.7.3]
+		at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.3.jar:2.7.3]
+		at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-2.7.3.jar:2.7.3]
+		at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-2.7.3.jar:2.7.3]
+		at com.ms_person.MsPersonApplication.main(MsPersonApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.dao.DataAccessResourceFailureException: Failed to obtain R2DBC Connection; nested exception is io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: [3D000] database "ms_person" does not exist
+	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.lambda$getConnection$0(ConnectionFactoryUtils.java:88) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+	at reactor.core.publisher.Mono.lambda$onErrorMap$31(Mono.java:3730) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:94) ~[reactor-core-3.4.22.jar:3.4.22]
+	... 62 common frames omitted
+Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlNonTransientResourceException: database "ms_person" does not exist
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:109) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.handleErrorResponse(ExceptionFactory.java:132) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:110) ~[reactor-core-3.4.22.jar:3.4.22]
+	... 35 common frames omitted
+
+2022-12-04 14:46:43.458  INFO 10365 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 10365 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:46:43.460  INFO 10365 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:46:43.766  INFO 10365 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:46:43.848  INFO 10365 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:46:43.980  INFO 10365 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=93b7c92f-4db2-3c9a-a37c-f1a224732a3b
+2022-12-04 14:46:44.043  INFO 10365 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:46:44.043  INFO 10365 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:46:44.045  INFO 10365 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:46:44.493  WARN 10365 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-04 14:46:44.595  INFO 10365 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8085
+2022-12-04 14:46:44.604  INFO 10365 --- [main] com.ms_person.MsPersonApplication        : Started MsPersonApplication in 1.388 seconds (JVM running for 1.719)
+2022-12-04 14:47:02.050  INFO 10912 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 10912 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:47:02.052  INFO 10912 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:47:02.355  INFO 10912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:47:02.430  INFO 10912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:47:02.548  INFO 10912 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=93b7c92f-4db2-3c9a-a37c-f1a224732a3b
+2022-12-04 14:47:02.621  INFO 10912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:47:02.622  INFO 10912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:47:02.623  INFO 10912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:47:03.081  WARN 10912 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-04 14:47:03.180  INFO 10912 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8085
+2022-12-04 14:47:03.188  INFO 10912 --- [main] com.ms_person.MsPersonApplication        : Started MsPersonApplication in 1.377 seconds (JVM running for 1.694)
+2022-12-04 14:47:06.189  INFO 10912 --- [reactor-http-epoll-3] c.m.service.impl.PersonServiceImpl       : Mostrando todas las personas
+2022-12-04 14:47:06.394 ERROR 10912 --- [reactor-tcp-epoll-1] a.w.r.e.AbstractErrorWebExceptionHandler : [4a032993-1]  500 Server Error for HTTP GET "/v2/person"
+
+org.springframework.r2dbc.BadSqlGrammarException: executeMany; bad SQL grammar [SELECT person.* FROM person]; nested exception is io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: [42P01] relation "person" does not exist
+	at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:235) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ Handler com.ms_person.controller.PersonController#findAll() [DispatcherHandler]
+	*__checkpoint ⇢ HTTP GET "/v2/person" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+		at org.springframework.r2dbc.connection.ConnectionFactoryUtils.convertR2dbcException(ConnectionFactoryUtils.java:235) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+		at org.springframework.r2dbc.core.DefaultDatabaseClient.lambda$inConnectionMany$8(DefaultDatabaseClient.java:147) ~[spring-r2dbc-5.3.22.jar:5.3.22]
+		at reactor.core.publisher.Flux.lambda$onErrorMap$29(Flux.java:6943) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Flux.lambda$onErrorResume$30(Flux.java:6996) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:94) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxUsingWhen$UsingWhenSubscriber.deferredError(FluxUsingWhen.java:398) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxUsingWhen$RollbackInner.onComplete(FluxUsingWhen.java:475) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators$MultiSubscriptionSubscriber.onComplete(Operators.java:2058) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onComplete(FluxPeek.java:260) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators$MultiSubscriptionSubscriber.onComplete(Operators.java:2058) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:209) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:209) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.pool.SimpleDequePool.lambda$maybeRecycleAndDrain$19(SimpleDequePool.java:554) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.core.publisher.LambdaMonoSubscriber.onComplete(LambdaMonoSubscriber.java:135) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxDoFinally$DoFinallySubscriber.onComplete(FluxDoFinally.java:128) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:209) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:238) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:203) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onComplete(FluxPeek.java:260) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:209) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.complete(Operators.java:137) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.netty.FutureMono.doSubscribe(FutureMono.java:122) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.FutureMono$ImmediateFutureMono.subscribe(FutureMono.java:83) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:240) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:203) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoPeekTerminal$MonoTerminalPeekSubscriber.onComplete(MonoPeekTerminal.java:299) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreElements$IgnoreElementsSubscriber.onComplete(MonoIgnoreElements.java:89) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.drain(FluxConcatMap.java:368) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onComplete(FluxConcatMap.java:276) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onComplete(FluxPeekFuseable.java:277) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators$ScalarSubscription.request(Operators.java:2400) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.request(FluxPeekFuseable.java:144) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxConcatMap$ConcatMapImmediate.onSubscribe(FluxConcatMap.java:236) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeekFuseable$PeekFuseableSubscriber.onSubscribe(FluxPeekFuseable.java:178) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxJust.subscribe(FluxJust.java:68) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:263) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:263) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribeWith(Mono.java:4512) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4368) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4304) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.pool.SimpleDequePool.maybeRecycleAndDrain(SimpleDequePool.java:548) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.pool.SimpleDequePool$QueuePoolRecyclerInner.onComplete(SimpleDequePool.java:765) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.core.publisher.Operators.complete(Operators.java:137) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoEmpty.subscribe(MonoEmpty.java:46) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.pool.SimpleDequePool$QueuePoolRecyclerMono.subscribe(SimpleDequePool.java:877) ~[reactor-pool-0.2.9.jar:0.2.9]
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:240) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:203) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeek$PeekSubscriber.onComplete(FluxPeek.java:260) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.complete(Operators.java:137) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoEmpty.subscribe(MonoEmpty.java:46) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:263) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:240) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.onComplete(MonoIgnoreThen.java:203) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreElements$IgnoreElementsSubscriber.onComplete(MonoIgnoreElements.java:89) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandleFuseable$HandleFuseableSubscriber.onComplete(FluxHandleFuseable.java:236) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators$MonoSubscriber.complete(Operators.java:1817) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoSupplier.subscribe(MonoSupplier.java:62) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen$ThenIgnoreMain.subscribeNext(MonoIgnoreThen.java:263) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreThen.subscribe(MonoIgnoreThen.java:51) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:103) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoIgnoreElements$IgnoreElementsSubscriber.onError(MonoIgnoreElements.java:84) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapSubscriber.onError(FluxMap.java:134) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxFilter$FilterSubscriber.onError(FluxFilter.java:157) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxFilter$FilterConditionalSubscriber.onError(FluxFilter.java:291) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onError(FluxMap.java:265) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Operators.error(Operators.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoError.subscribe(MonoError.java:53) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoDeferContextual.subscribe(MonoDeferContextual.java:55) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.InternalMonoOperator.subscribe(InternalMonoOperator.java:64) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.MonoDefer.subscribe(MonoDefer.java:52) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.Mono.subscribe(Mono.java:4397) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxUsingWhen$UsingWhenSubscriber.onError(FluxUsingWhen.java:364) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxFlatMap$FlatMapMain.checkTerminated(FluxFlatMap.java:842) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxFlatMap$FlatMapMain.drainLoop(FluxFlatMap.java:608) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxFlatMap$FlatMapMain.drain(FluxFlatMap.java:588) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxFlatMap$FlatMapMain.innerError(FluxFlatMap.java:863) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxFlatMap$FlatMapInner.onError(FluxFlatMap.java:990) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxHandleFuseable$HandleFuseableSubscriber.onNext(FluxHandleFuseable.java:198) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxWindowPredicate$WindowFlux.drainRegular(FluxWindowPredicate.java:668) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxWindowPredicate$WindowFlux.drain(FluxWindowPredicate.java:746) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxWindowPredicate$WindowFlux.onNext(FluxWindowPredicate.java:788) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxWindowPredicate$WindowPredicateMain.onNext(FluxWindowPredicate.java:239) ~[reactor-core-3.4.22.jar:3.4.22]
+		at io.r2dbc.postgresql.util.FluxDiscardOnCancel$FluxDiscardOnCancelSubscriber.onNext(FluxDiscardOnCancel.java:91) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$BufferAsyncSink.drain(FluxCreate.java:814) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$BufferAsyncSink.next(FluxCreate.java:739) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxCreate$SerializedFluxSink.next(FluxCreate.java:161) ~[reactor-core-3.4.22.jar:3.4.22]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$Conversation.emit(ReactorNettyClient.java:635) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.emit(ReactorNettyClient.java:887) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:761) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:667) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+		at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:126) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxPeekFuseable$PeekConditionalSubscriber.onNext(FluxPeekFuseable.java:854) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+		at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:279) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:388) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:404) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:93) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:327) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:314) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:435) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:279) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:800) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:487) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:385) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+		at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: io.r2dbc.postgresql.ExceptionFactory$PostgresqlBadGrammarException: relation "person" does not exist
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:96) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.createException(ExceptionFactory.java:65) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.ExceptionFactory.handleErrorResponse(ExceptionFactory.java:132) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.PostgresqlResult.lambda$map$2(PostgresqlResult.java:111) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandleFuseable$HandleFuseableSubscriber.onNext(FluxHandleFuseable.java:176) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxWindowPredicate$WindowFlux.drainRegular(FluxWindowPredicate.java:668) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxWindowPredicate$WindowFlux.drain(FluxWindowPredicate.java:746) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxWindowPredicate$WindowFlux.onNext(FluxWindowPredicate.java:788) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxWindowPredicate$WindowPredicateMain.onNext(FluxWindowPredicate.java:239) ~[reactor-core-3.4.22.jar:3.4.22]
+	at io.r2dbc.postgresql.util.FluxDiscardOnCancel$FluxDiscardOnCancelSubscriber.onNext(FluxDiscardOnCancel.java:91) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.drain(FluxCreate.java:814) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$BufferAsyncSink.next(FluxCreate.java:739) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxCreate$SerializedFluxSink.next(FluxCreate.java:161) ~[reactor-core-3.4.22.jar:3.4.22]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$Conversation.emit(ReactorNettyClient.java:635) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.emit(ReactorNettyClient.java:887) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:761) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at io.r2dbc.postgresql.client.ReactorNettyClient$BackendMessageSubscriber.onNext(ReactorNettyClient.java:667) ~[r2dbc-postgresql-0.9.1.RELEASE.jar:0.9.1.RELEASE]
+	at reactor.core.publisher.FluxHandle$HandleSubscriber.onNext(FluxHandle.java:126) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxPeekFuseable$PeekConditionalSubscriber.onNext(FluxPeekFuseable.java:854) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.core.publisher.FluxMap$MapConditionalSubscriber.onNext(FluxMap.java:224) ~[reactor-core-3.4.22.jar:3.4.22]
+	at reactor.netty.channel.FluxReceive.drainReceiver(FluxReceive.java:279) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.FluxReceive.onInboundNext(FluxReceive.java:388) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperations.onInboundNext(ChannelOperations.java:404) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:93) ~[reactor-netty-core-1.0.22.jar:1.0.22]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:327) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:314) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:435) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:279) ~[netty-codec-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:800) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:487) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:385) ~[netty-transport-classes-epoll-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-12-04 14:47:36.607  INFO 11091 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 11091 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:47:36.608  INFO 11091 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:47:36.915  INFO 11091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:47:36.985  INFO 11091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:47:37.092  INFO 11091 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=64bdfe1a-1b75-32e5-865e-452dc2a61987
+2022-12-04 14:47:37.158  INFO 11091 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:47:37.158  INFO 11091 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:47:37.160  INFO 11091 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:47:37.964  WARN 11091 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-04 14:47:38.017  INFO 11091 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8085
+2022-12-04 14:47:38.025  INFO 11091 --- [main] com.ms_person.MsPersonApplication        : Started MsPersonApplication in 1.67 seconds (JVM running for 1.994)
+2022-12-04 14:47:40.866  INFO 11091 --- [reactor-http-epoll-3] c.m.service.impl.PersonServiceImpl       : Mostrando todas las personas
+2022-12-04 14:51:38.377  INFO 12415 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 12415 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 14:51:38.379  INFO 12415 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 14:51:38.659  INFO 12415 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 14:51:38.731  INFO 12415 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 14:51:38.843  INFO 12415 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=64bdfe1a-1b75-32e5-865e-452dc2a61987
+2022-12-04 14:51:38.912  INFO 12415 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:51:38.912  INFO 12415 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:51:38.914  INFO 12415 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 14:51:39.735  WARN 12415 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-04 14:51:39.787  INFO 12415 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8085
+2022-12-04 14:51:39.795  INFO 12415 --- [main] com.ms_person.MsPersonApplication        : Started MsPersonApplication in 1.675 seconds (JVM running for 2.009)
+2022-12-04 14:52:56.694  INFO 12415 --- [reactor-http-epoll-3] c.m.service.impl.PersonServiceImpl       : Mostrando todas las personas
+2022-12-04 15:19:25.523  INFO 21776 --- [main] com.ms_person.MsPersonApplication        : Starting MsPersonApplication using Java 17.0.5 on fedora with PID 21776 (/home/jose/Descargas/as201-ms-person/target/classes started by jose in /home/jose/Descargas/as201-ms-person)
+2022-12-04 15:19:25.526  INFO 21776 --- [main] com.ms_person.MsPersonApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-12-04 15:19:25.884  INFO 21776 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data R2DBC repositories in DEFAULT mode.
+2022-12-04 15:19:26.023  INFO 21776 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 1 R2DBC repository interfaces.
+2022-12-04 15:19:26.128  INFO 21776 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=64bdfe1a-1b75-32e5-865e-452dc2a61987
+2022-12-04 15:19:26.192  INFO 21776 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 15:19:26.193  INFO 21776 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 15:19:26.194  INFO 21776 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-12-04 15:19:27.065  WARN 21776 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-12-04 15:19:27.118  INFO 21776 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8085
+2022-12-04 15:19:27.127  INFO 21776 --- [main] com.ms_person.MsPersonApplication        : Started MsPersonApplication in 1.869 seconds (JVM running for 2.306)
+2022-12-04 15:19:30.139  INFO 21776 --- [reactor-http-epoll-3] c.m.service.impl.PersonServiceImpl       : Mostrando todas las personas

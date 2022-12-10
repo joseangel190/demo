@@ -1,0 +1,25 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: person
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/data
+    username: postgres
+    password: 123456
+#  r2dbc:
+#    properties:
+#      sslMode: REQUIRE
+#    url: r2dbc:pool:postgres://pgsqlserver123.postgres.database.azure.com:5432/postgres
+#    username: postgressql@pgsqlserver123
+#    password: Java2020@
+
+#logging:
+#  file:
+#    name: .\logstash\logstash.log
+#  level:
+#    org:
+#      springframework:
+#        data:
+#          r2dbc: DEBUG

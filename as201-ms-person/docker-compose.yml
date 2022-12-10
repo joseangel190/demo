@@ -1,0 +1,22 @@
+services:
+
+  db:
+    container_name: postgresql
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: data
+
+#  person:
+#    container_name: person
+#    image: person:latest
+#    ports:
+#      - 8085:8085
+#    depends_on:
+#      - db
+#    environment:
+#      SPRING_R2DBC_URL: r2dbc:postgresql://db:5432/ms_person
+#      SPRING_R2DBC_USERNAME: postgres
+#      SPRING_R2DBC_PASSWORD: 123456

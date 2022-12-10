@@ -1,0 +1,76 @@
+<div class="container" style="text-align: center">
+    <br/>
+    <br/>
+    <h1>{{this.personService.personSelected ? "EDITAR PERSONA" : "REGISTRAR PERSONA"}}</h1>
+</div>
+
+<div class="container">
+    <form [formGroup]="personForm" (ngSubmit)="save()">
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <label for="id_type" class="form-label">TIPO DE IDENTIFICACIÓN</label>
+                <select class="form-select" aria-label="id_type" formControlName="id_type">
+                    <option selected>Seleccione</option>
+                    <option value="DNI">DNI</option>
+                    <option value="CE">Carnet de Extranjeria</option>
+                </select>
+            </div>
+            <div class="form-outline col">
+                <label for="id_number" class="form-label">NÚMERO DE IDENTIFICACIÓN</label>
+                <input type="number" class="form-control" formControlName="id_number">
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <label for="name" class="form-label">NOMBRES</label>
+                <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="form-outline col">
+                <label for="name" class="form-label">APELLIDOS</label>
+                <input type="text" class="form-control" formControlName="lastname">
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <label for="cellphone" class="form-label">CELULAR</label>
+                <input type="number" class="form-control" formControlName="cellphone">
+            </div>
+            <div class="form-outline col">
+                <label for="email" class="form-label">EMAIL</label>
+                <input type="email" class="form-control" formControlName="email">
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <label for="username" class="form-label">USUARIO</label>
+                <input type="text" class="form-control" formControlName="username">
+            </div>
+            <div class="form-group col" *ngIf="password">
+                <label for="password" class="form-label">CONTRASEÑA</label>
+                <input [type]="change_type?'password':'text'" formControlName="password" style="width: 615px;">
+                <span class="eyeicon" (click)="viewPassword()">
+                    <em [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></em>
+                </span>
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+        <button type="button" class="btn btn-danger" (click)="btnCancel()">
+            <em class="fa-solid fa-ban"></em>
+            CANCELAR
+        </button>
+        <!-- <button type="button" class="btn btn-dark" type="submit" [disabled]="personForm.invalid" (click)="edit ? update() : register()"> -->
+        <button type="submit" class="btn btn-dark" [disabled]="personForm.invalid">
+            <em class="fa-solid fa-floppy-disk"></em>
+            {{personService.personSelected ? 'ACTUALIZAR' : 'GUARDAR'}}
+        </button>
+    </form>
+</div>

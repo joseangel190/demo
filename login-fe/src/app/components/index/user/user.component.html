@@ -1,0 +1,22 @@
+<h3>Ingreso como usuario</h3>
+<div class="dropdown">
+  <button type="button" class="btn btn-dark bi bi-person-circle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"></button>
+  <form class="dropdown-menu p-4">
+    <div class="mb-3" >
+      <label for="id" class="form-label">Id: </label>
+      <input type="number" class="form-control" id="id" [(ngModel)]="id" name="id">
+    </div>
+    <button type="submit" class="btn btn-secondary" (click)="findById()">Consultar</button>
+
+<!--    <div class="card" *ngFor="let data of personModels">-->
+<!--      Name: {{data.name}}-->
+<!--    </div>-->
+  </form>
+
+<!--  <div class="container" *ngFor="let data of personModels">-->
+<!--    Name:-->
+<!--  </div>-->
+
+</div>
+
+

@@ -1,0 +1,190 @@
+<br/>
+<br/>
+
+<div class="container" style="text-align: center">
+    <div class="container w-25 p-1">
+        <h5>MOSTRAR TABLA DE:</h5>
+        <select class="form-select" (change)="visibleTable()" [(ngModel)]="visible_table_type" style="color: black; font-weight: bold; width: 315px;" aria-label="Filtro">
+            <option value=1 style="color: black; font-weight: bold;">PERSONAS</option>
+            <option value=2 style="color: black; font-weight: bold;">ESTUDIANTES</option>
+            <option value=3 style="color: black; font-weight: bold;">AMBOS</option>
+        </select>
+    </div>
+</div>
+
+<div class="container" style="text-align: center" *ngIf="visible_person_table">
+    <div>
+        <br/>
+        <br/>
+        <h1>LISTA DE PERSONAS REGISTRADAS</h1>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="form-outline col"></div>
+        <div class="form-outline col">
+            <h5>FILTRO POR:</h5>
+            <select class="form-select" (change)="listPerson()" [(ngModel)]="person_type_list" style="color: black; font-weight: bold;" aria-label="Filtro">
+                <option value=1 style="color: black; font-weight: bold;">ACTIVOS</option>
+                <option value=2 style="color: red; font-weight: bold;">INACTIVOS</option>
+                <option value=3 style="color: orange; font-weight: bold;">TODOS</option>
+            </select>
+        </div>
+        <div class="form-outline col">
+            <h5>BUSQUEDA GENERAL:</h5>
+            <div class="form-group">
+                <input type="text" class="form-control" name="filterPerson" placeholder="Buscar..." [(ngModel)]="filter_person">
+            </div>
+        </div>
+        <div class="form-outline col"></div>
+    </div>
+    <br/>
+    <button class="btn btn-dark" (click)="pdfPerson()">
+        <em class='fa-solid fa-circle-down'></em>
+        PDF
+    </button>
+    <form id="pdfPerson">
+        <table class="table table-striped table-bordered mat-elevation-z8">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col" class="text-bold col-2">TIPO DE IDENTIFICACIÓN</th>
+                    <th scope="col">N° DE IDENTIFICACIÓN</th>
+                    <th scope="col">NOMBRES Y APELLIDOS</th>
+                    <th scope="col">CELULAR</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">USUARIO</th>
+                    <th scope="col" style="text-align: center">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let person of persons | paginate: { itemsPerPage: 3, currentPage: person_table_page } | filterPerson:filter_person">
+                    <td>{{person.id_type}}</td>
+                    <td>{{person.id_number}}</td>
+                    <td>{{person.name}} {{person.lastname}}</td>
+                    <td>{{person.cellphone}}</td>
+                    <td>{{person.email}}</td>
+                    <td>{{person.username}}</td>
+                    <td style="text-align: center">
+                        <button type="button" *ngIf="person.active" class="btn btn-dark btn-sm" (click)="editPerson(person)">
+                        <em class="fa-sharp fa-solid fa-pen-to-square"></em>
+                        EDITAR
+                    </button>
+                        <button type="button" *ngIf="person.active" class="btn btn-danger btn-sm" (click)="deletePerson(person.id)">
+                        <em class="fa-solid fa-trash"></em>
+                        ELIMINAR
+                    </button>
+                        <button type="button" *ngIf="person.active == false" class="btn btn-warning btn-sm" (click)="restorePerson(person.id)">
+                        <em class="fa-solid fa-trash-can-arrow-up"></em>
+                        RESTAURAR
+                    </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="persons.length == 0" style="text-align: center">
+            <p class="fw-semibold fs-6" style="color: #BD1F09;">
+                <em class="fa-solid fa-circle-xmark"></em> Sin Registros...
+            </p>
+        </div>
+    </form>
+    <pagination-controls (pageChange)="person_table_page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>
+
+<div class="container" style="text-align: center" *ngIf="visible_student_table">
+    <div>
+        <br/>
+        <br/>
+        <h1>LISTA DE ESTUDIANTES REGISTRADOS</h1>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="form-outline col"></div>
+        <div class="form-outline col">
+            <h5>FILTRO POR:</h5>
+            <select class="form-select" (change)="listStudent()" [(ngModel)]="student_type_list" style="color: black; font-weight: bold; width: 315px;" aria-label="Filtro">
+                <option value=1 style="color: black; font-weight: bold;">ESTUDIANTES</option>
+                <option value=2 style="color: orange; font-weight: bold;">EGRESADOS</option>
+                <option value=3 style="color: red; font-weight: bold;">RETIRADOS</option>
+                <option value=4 style="color: black; font-weight: bold;">TODOS</option>
+            </select>
+        </div>
+        <div class="form-outline col">
+            <h5>BUSQUEDA GENERAL:</h5>
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="filterStudent" placeholder="Buscar..." [(ngModel)]="filter_student">
+                </div>
+            </div>
+        </div>
+        <div class="form-outline col"></div>
+    </div>
+    <br/>
+    <button class="btn btn-dark" (click)="pdfStudent()">
+        <em class='fa-solid fa-circle-down'></em>
+        PDF
+    </button>
+    <form id="pdfStudent">
+        <table class="table table-striped table-bordered mat-elevation-z8">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">PERSONA</th>
+                    <th scope="col">CARRERA</th>
+                    <th scope="col">EMAIL INSTITUCIONAL</th>
+                    <th scope="col">FECHA ADMISIÓN</th>
+                    <th scope="col">APODERADO</th>
+                    <th scope="col">CELULAR</th>
+                    <th scope="col" style="text-align: center">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students | paginate: { itemsPerPage: 3, currentPage: student_table_page } | filterStudent:filter_student">
+                    <td>
+                        {{student.person_name}}
+                        <button type="button" class="btn btn-light btn-sm" (click)="openDialogPerson(student.person_id)">
+                        <em class="fa fa-eye"></em> VER
+                    </button>
+                    </td>
+                    <td>
+                        {{student.career_name}}
+                        <button type="button" class="btn btn-light btn-sm" (click)="openDialogCareer(student.career_id)">
+                        <em class="fa fa-eye"></em> VER
+                    </button>
+                    </td>
+                    <td>{{student.institutional_email}}</td>
+                    <td>{{student.admission_date | date:'dd-MMMM-yyyy'}}</td>
+                    <td>{{student.guardian_name}}</td>
+                    <td>{{student.home_phone}}</td>
+                    <td style="text-align: center">
+                        <button type="button" *ngIf="student.status == 'Estudiante'" class="btn btn-dark btn-sm" (click)="editStudent(student)">
+                            <em class="fa-sharp fa-solid fa-pen-to-square"></em>
+                            EDITAR
+                        </button>
+                        <button type="button" *ngIf="student.status == 'Estudiante'" class="btn btn-danger btn-sm" (click)="deleteGraduatedStudent(student.id)">
+                            <em class="fa-solid fa-trash"></em>
+                            EGRESAR
+                        </button>
+                        <button type="button" *ngIf="student.status == 'Estudiante'" class="btn btn-danger btn-sm" (click)="deleteRetiredStudent(student.id)">
+                            <em class="fa-solid fa-trash"></em>
+                            RETIRAR
+                        </button>
+                        <button type="button" *ngIf="student.status == 'Egresado' || student.status == 'Retirado'" class="btn btn-warning btn-sm" (click)="restoreStudent(student.id)">
+                            <em class="fa-solid fa-trash-can-arrow-up"></em>
+                            ESTUDIANTE
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="students.length == 0" style="text-align: center">
+            <p class="fw-semibold fs-6" style="color: #BD1F09;">
+                <em class="fa-solid fa-circle-xmark"></em> Sin Registros...
+            </p>
+        </div>
+    </form>
+    <pagination-controls (pageChange)="student_table_page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

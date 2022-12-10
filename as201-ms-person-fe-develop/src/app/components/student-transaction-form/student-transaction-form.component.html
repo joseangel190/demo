@@ -1,0 +1,79 @@
+<div class="container" style="text-align: center">
+    <br/>
+    <br/>
+    <h1>{{this.studentService.studentSelected ? "EDITAR ESTUDIANTE" : "REGISTRAR ESTUDIANTE"}}</h1>
+</div>
+
+<div class="container">
+    <form [formGroup]="studentForm" (ngSubmit)="save()">
+        <br/>
+        <div class="row">
+            <div class="dropdown col">
+                <label for="person_id" class="form-label">PERSONA</label>
+                <select class="form-select" aria-label="person_id" formControlName="person_id">
+                    <option selected>Seleccione</option>
+                    <option *ngFor="let person of persons" value={{person.id}} style="color: black; font-weight: bold;">
+                        {{person.name}} {{person.lastname}}
+                    </option>
+                </select>
+            </div>
+            <div class="dropdown col">
+                <label for="career_id" class="form-label">CARRERA PROFESIONAL</label>
+                <select class="form-select" aria-label="career_id" formControlName="career_id">
+                    <option selected>Seleccione</option>
+                    <option *ngFor="let career of careers" value={{career.id}} style="color: black; font-weight: bold;">
+                        {{career.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <label for="institutional_email" class="form-label">EMAIL INSTITUCIONAL</label>
+                <input type="email" class="form-control" formControlName="institutional_email">
+            </div>
+            <div class="form-outline col">
+                <label for="pay_method" class="form-label">MÉTODO DE PAGO</label>
+                <select class="form-select" aria-label="pay_method" formControlName="pay_method">
+                    <option selected>Seleccione</option>
+                    <option value="Dinero en Efectivo" style="color: black; font-weight: bold;">Dinero en Efectivo</option>
+                    <option value="Tarjeta de Crédito" style="color: black; font-weight: bold;">Tarjeta de Crédito</option>
+                    <option value="Transferencia Bancaria" style="color: black; font-weight: bold;">Transferencia Bancaria</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <label for="admission_date" class="form-label">FECHA DE ADMISIÓN</label>
+                <input type="date" class="form-control" formControlName="admission_date">
+            </div>
+            <div class="form-outline col">
+                <label for="guardian_name" class="form-label">NOMBRE COMPLETO DEL APODERADO</label>
+                <input type="text" class="form-control" formControlName="guardian_name">
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <label for="home_phone" class="form-label">CELULAR DE CASA</label>
+                <input type="number" class="form-control" formControlName="home_phone">
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+        <button type="button" class="btn btn-danger" (click)="btnCancel()">
+            <em class="fa-solid fa-ban"></em>
+            CANCELAR
+        </button>
+        <button type="submit" class="btn btn-dark" type="submit" [disabled]="studentForm.invalid">
+            <em class="fa-solid fa-floppy-disk"></em>
+            {{studentService.studentSelected ? 'ACTUALIZAR' : 'GUARDAR'}}
+        </button>
+    </form>
+</div>
